@@ -1,0 +1,80 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme inline {
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+}
+
+:root {
+  --background: oklch(0.075 0.018 265);
+  --foreground: oklch(0.90 0.01 255);
+  --card: oklch(0.11 0.022 265);
+  --primary: oklch(0.65 0.22 250);
+  --muted-foreground: oklch(0.56 0.015 260);
+  --border: oklch(0.28 0.03 265 / 0.5);
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.28 0.03 265);
+    border-radius: 99px;
+  }
+}
+
+/* ─── Design system ─── */
+
+.glass {
+  background: oklch(0.13 0.022 265 / 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid oklch(0.32 0.035 265 / 0.35);
+}
+
+.glass-light {
+  background: oklch(0.15 0.022 265 / 0.60);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid oklch(0.35 0.04 265 / 0.25);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-blue {
+  box-shadow:
+    0 0 20px oklch(0.65 0.22 250 / 0.30),
+    0 0 60px oklch(0.65 0.22 250 / 0.12);
+}
+.glow-purple {
+  box-shadow:
+    0 0 20px oklch(0.55 0.25 290 / 0.35),
+    0 0 60px oklch(0.55 0.25 290 / 0.12);
+}
+.glow-gold {
+  box-shadow:
+    0 0 20px oklch(0.78 0.15 75 / 0.40),
+    0 0 60px oklch(0.78 0.15 75 / 0.15);
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(oklch(0.30 0.03 265 / 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.30 0.03 265 / 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
