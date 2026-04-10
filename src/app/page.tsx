@@ -44,6 +44,20 @@ const APPS = [
     icon: "🧠",
     bgImage: null,
   },
+  {
+    name: "LoLDurafutu",
+    tagline: "Draft de tournoi multijoueur",
+    description:
+      "Bientôt — Simule une draft compétitive à 10 joueurs en temps réel : picks et bans tour par tour selon les règles officielles de tournoi.",
+    href: null,
+    available: false,
+    accentClass: "glow-red",
+    borderColor: "oklch(0.60 0.22 20 / 0.3)",
+    badge: "Bientôt",
+    badgeColor: "text-[#f87171] bg-[#f871711a]",
+    icon: "🎯",
+    bgImage: null,
+  },
 ];
 
 export default function Home() {
@@ -83,7 +97,7 @@ export default function Home() {
         </header>
 
         {/* Cards */}
-        <section className="grid gap-6 md:grid-cols-3">
+        <section className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {APPS.map((app) => (
             <AppCard key={app.name} app={app} />
           ))}
