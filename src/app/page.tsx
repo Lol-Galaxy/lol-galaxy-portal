@@ -15,6 +15,7 @@ const APPS = [
     badgeColor: "text-[#60a5fa] bg-[#60a5fa1a]",
     icon: "⚔️",
     bgImage: null,
+    logo: null,
   },
   {
     name: "LoLCuriosity",
@@ -29,6 +30,7 @@ const APPS = [
     badgeColor: "text-[#C89B3C] bg-[#C89B3C1a]",
     icon: "📊",
     bgImage: "/caitlyn-lolcuriosity.png",
+    logo: "/caitlyn-lolcuriosity.png",
   },
   {
     name: "LoL Self Improve",
@@ -43,6 +45,7 @@ const APPS = [
     badgeColor: "text-[#c084fc] bg-[#c084fc1a]",
     icon: "🧠",
     bgImage: null,
+    logo: null,
   },
   {
     name: "LoLDurafutu",
@@ -57,6 +60,22 @@ const APPS = [
     badgeColor: "text-[#f87171] bg-[#f871711a]",
     icon: "🎯",
     bgImage: null,
+    logo: null,
+  },
+  {
+    name: "LoL Quizzy",
+    tagline: "Teste tes connaissances LoL",
+    description:
+      "Quiz sur l'univers de League of Legends : champions, lore, mécaniques de jeu et anecdotes. Affronte d'autres joueurs et prouve ta maîtrise.",
+    href: process.env.LOLQUIZZY_URL ?? "#",
+    available: true,
+    accentClass: "glow-purple",
+    borderColor: "oklch(0.55 0.25 290 / 0.4)",
+    badge: "Disponible",
+    badgeColor: "text-[#c084fc] bg-[#c084fc1a]",
+    icon: "❓",
+    bgImage: "/lolquizzy.png",
+    logo: "/lolquizzy.png",
   },
 ];
 
@@ -142,8 +161,8 @@ function AppCard({ app }: { app: (typeof APPS)[number] }) {
             src={app.bgImage}
             alt=""
             fill
-            className="object-cover object-top"
-            style={{ opacity: 0.18 }}
+            className={`object-cover ${app.logo ? "object-center" : "object-top"}`}
+            style={{ opacity: app.logo ? 0.22 : 0.18 }}
             aria-hidden
           />
           {/* Dégradé navy LoLCuriosity par-dessus l'image */}
@@ -161,7 +180,11 @@ function AppCard({ app }: { app: (typeof APPS)[number] }) {
       <div className="relative z-10 glass p-6 h-full flex flex-col" style={{ background: "transparent", border: "none" }}>
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
-          <span className="text-3xl">{app.icon}</span>
+          {app.logo ? (
+            <Image src={app.logo} alt={app.name} width={48} height={48} className="rounded-xl" />
+          ) : (
+            <span className="text-3xl">{app.icon}</span>
+          )}
           <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${app.badgeColor}`}>
             {app.badge}
           </span>
